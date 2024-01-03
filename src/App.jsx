@@ -31,7 +31,7 @@ function App() {
     setSelectedKeys(keyPath);
     // Use keyPath as needed. It contains the keys of the selected items.
     const newRoutesArray = keyPath.map((key) => routeNames[key]).reverse();
-    console.log(newRoutesArray);
+    // console.log(newRoutesArray);
     setRoutesArray(newRoutesArray);
   };
 
@@ -116,6 +116,7 @@ function App() {
             </div>
             <div className="sub_sidebar">
               <div className="title">DOCUMENTATION</div>
+
               <Menu
                 mode="inline"
                 openKeys={openKeys}
@@ -138,6 +139,7 @@ function App() {
                 })}
               </Breadcrumb>
             </div>
+            {/* Define dynamic routes based on the selected menu */}
           </Content>
         </Layout>
       )}
