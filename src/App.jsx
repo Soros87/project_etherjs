@@ -7,13 +7,15 @@ import { Breadcrumb, Input, Space } from "antd";
 import { IoMdMenu } from "react-icons/io";
 import { AiOutlineClose } from "react-icons/ai";
 import { useState } from "react";
-import { items } from "./assets/menu";
+import { items, routeNames } from "./assets/menu";
 
 // submenu keys of first level
-const rootSubmenuKeys = ["sub1", "sub2", "sub4"];
+const rootSubmenuKeys = ["sub1", "sub2", "sub3"];
 
 function App() {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const [selectedKeys, setSelectedKeys] = useState([]);
+  const [routesArray, setRoutesArray] = useState([]);
 
   const [openKeys, setOpenKeys] = useState(["sub1"]);
   const onOpenChange = (keys) => {
@@ -23,6 +25,14 @@ function App() {
     } else {
       setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
     }
+  };
+
+  const handleMenuSelect = ({ keyPath }) => {
+    setSelectedKeys(keyPath);
+    // Use keyPath as needed. It contains the keys of the selected items.
+    const newRoutesArray = keyPath.map((key) => routeNames[key]).reverse();
+    console.log(newRoutesArray);
+    setRoutesArray(newRoutesArray);
   };
 
   return (
@@ -79,6 +89,8 @@ function App() {
             openKeys={openKeys}
             onOpenChange={onOpenChange}
             items={items}
+            onSelect={handleMenuSelect}
+            selectedKeys={selectedKeys}
           />
         </div>
       )}
@@ -109,6 +121,8 @@ function App() {
                 openKeys={openKeys}
                 onOpenChange={onOpenChange}
                 items={items}
+                onSelect={handleMenuSelect}
+                selectedKeys={selectedKeys}
               />
             </div>
             <div className="sidebar_bottom">
@@ -118,9 +132,10 @@ function App() {
           <Content style={{ padding: "0 48px" }}>
             <div className="navbar">
               <Breadcrumb style={{ margin: "16px 0" }} separator=">">
-                <Breadcrumb.Item>Home</Breadcrumb.Item>
-                <Breadcrumb.Item>List</Breadcrumb.Item>
-                <Breadcrumb.Item>App</Breadcrumb.Item>
+                <Breadcrumb.Item>Documentation</Breadcrumb.Item>
+                {routesArray.map((o, index) => {
+                  return <Breadcrumb.Item key={index}>{o}</Breadcrumb.Item>;
+                })}
               </Breadcrumb>
             </div>
           </Content>
