@@ -11,3 +11,5 @@ This is a front end project to imitate a ether js design template.
   1) Nested menu items
   2) BreadCrumbs
   3) Media responsive layout of Menu
+
+Help needed: how to generate dynamic routes based on user selection menu
