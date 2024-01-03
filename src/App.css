@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Roboto:wght@300&display=swap");
+
+/* CSS */
+.full-screen-layout {
+  width: 100vw; /* Full width of the viewport */
+  height: 100vh; /* Full height of the viewport */
+  margin: 0; /* Remove any default margins */
+  padding: 0; /* Remove any default paddings */
+  overflow: auto; /* Hide any potential overflowing content */
+}
+
+.ant-layout-header {
+  display: none;
+}
+
+.full-screen-layout .ant-layout-sider {
+  background-color: #2535a0; /* Background color */
+  color: white; /* Text color */
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar_header {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Change flex-direction to column */
+  height: 10%; /* Ensures the content fills the sidebar height */
+}
+
+.sidebar_header span {
+  font-size: 24px;
+  font-weight: 900px;
+  color: white; /* Set text color to white */
+  opacity: 0.4; /* Set opacity to 0.4 */
+}
+
+.sidebar_bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-center: center;
+  margin-top: 10px;
+}
+
+.sidebar_bottom span {
+  font-size: 16px;
+  font-weight: 900px;
+  color: white; /* Set text color to white */
+  opacity: 0.4; /* Set opacity to 0.4 */
+}
+
+.logo-ethers {
+  width: 70px; /* Set width to 50 pixels */
+  height: 70px; /* Set height to 50 pixels */
+  margin-bottom: 1px; /* Adjust margin to create space between image and text */
+}
+
+/* Initial style for the SVG */
+.hover-fill {
+  transition: fill 0.3s ease; /* Smooth transition effect */
+}
+
+/* Hover effect: Change the fill color to white on hover */
+.hover-svg:hover .hover-fill {
+  fill: white; /* Change the fill color to white on hover */
+}
+
+.sub_sidebar {
+  background-color: #334;
+  box-shadow: 5px 0px 10px 0 #aaa;
+  font-size: 16px;
+  overflow: auto;
+  padding-top: 20px; /* Adjust padding as needed */
+  padding-bottom: 20px; /* Adjust padding as needed */
+  /* Adjust positioning to fit within the Sider */
+  position: relative; /* or other positioning as needed */
+  height: calc(100% - 240px); /* Adjust height minus padding */
+  margin-top: 60px; /* Add margin-top to shift the sidebar down */
+}
+
+.navbar {
+  border-bottom: 1px solid #ccc;
+}
+
+.sub_verticalbar {
+  background-color: #334;
+  box-shadow: 5px 0px 10px 0 #aaa;
+  font-size: 16px;
+  overflow: auto;
+  position: relative; /* or other positioning as needed */
+  height: 100vh; /* Adjust height minus padding */
+  transition: top 10s ease-in-out; /* Animation duration and easing */
+}
+
+@media only screen and (max-width: 50em) {
+  .full-screen-layout .ant-layout-sider {
+    display: none;
+  }
+
+  /* Adjust content padding when Sider is hidden */
+  .full-screen-layout .ant-layout-content {
+    padding: 0 24px; /* Example padding */
+  }
+
+  .ant-layout-header {
+    background-color: #2535a0;
+    display: flex;
+  }
+}
