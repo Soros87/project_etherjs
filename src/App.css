@@ -24,7 +24,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column; /* Change flex-direction to column */
+  flex-direction: column; /* Change flex-direction `to column */
   height: 10%; /* Ensures the content fills the sidebar height */
 }
 
@@ -77,6 +77,13 @@
   position: relative; /* or other positioning as needed */
   height: calc(100% - 240px); /* Adjust height minus padding */
   margin-top: 60px; /* Add margin-top to shift the sidebar down */
+  padding-left: 15px; /* Adjust padding*/
+
+  .title {
+    color: #666;
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
 }
 
 .navbar {
@@ -91,6 +98,18 @@
   position: relative; /* or other positioning as needed */
   height: 100vh; /* Adjust height minus padding */
   transition: top 10s ease-in-out; /* Animation duration and easing */
+}
+
+/* Set the font family to Lato for the Menu component */
+.ant-menu {
+  font-family: "Lato", sans-serif;
+  background-color: transparent;
+}
+
+/* Set the text color to white */
+.ant-menu-item,
+.ant-menu-submenu-title {
+  color: white;
 }
 
 @media only screen and (max-width: 50em) {

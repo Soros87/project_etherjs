@@ -1,14 +1,29 @@
 import "./App.css";
 import Layout, { Content, Header } from "antd/es/layout/layout";
+import { Menu } from "antd";
 import Sider from "antd/es/layout/Sider";
 import ethersLogo from "./assets/etherslogo.svg";
 import { Breadcrumb, Input, Space } from "antd";
 import { IoMdMenu } from "react-icons/io";
 import { AiOutlineClose } from "react-icons/ai";
 import { useState } from "react";
+import { items } from "./assets/menu";
+
+// submenu keys of first level
+const rootSubmenuKeys = ["sub1", "sub2", "sub4"];
 
 function App() {
   const [toggleMenu, setToggleMenu] = useState(false);
+
+  const [openKeys, setOpenKeys] = useState(["sub1"]);
+  const onOpenChange = (keys) => {
+    const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
+    if (latestOpenKey && rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+      setOpenKeys(keys);
+    } else {
+      setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
+    }
+  };
 
   return (
     <Layout className="full-screen-layout">
@@ -56,7 +71,17 @@ function App() {
           </div>
         </div>
       </Header>
-      {toggleMenu && <div className="sub_verticalbar"></div>}
+      {toggleMenu && (
+        <div className="sub_verticalbar">
+          {" "}
+          <Menu
+            mode="inline"
+            openKeys={openKeys}
+            onOpenChange={onOpenChange}
+            items={items}
+          />
+        </div>
+      )}
       {toggleMenu ? null : (
         <Layout>
           <Sider width="15%">
@@ -77,7 +102,15 @@ function App() {
                 />
               </Space.Compact>
             </div>
-            <div className="sub_sidebar"></div>
+            <div className="sub_sidebar">
+              <div className="title">DOCUMENTATION</div>
+              <Menu
+                mode="inline"
+                openKeys={openKeys}
+                onOpenChange={onOpenChange}
+                items={items}
+              />
+            </div>
             <div className="sidebar_bottom">
               <span>Single Page</span>
             </div>
